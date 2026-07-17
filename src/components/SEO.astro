@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ogType?: string;
+  ogImage?: URL;
+}
+
+const { title, description, ogType = 'website', ogImage } = Astro.props;
+
+// Normalize to the trailing-slash form GitHub Pages actually serves,
+// so canonical/OG URLs never point at a redirect.
+const pathname =
+  Astro.url.pathname.endsWith('/') || Astro.url.pathname.includes('.')
+    ? Astro.url.pathname
+    : `${Astro.url.pathname}/`;
+const canonical = new URL(pathname, Astro.site);
+const image = ogImage ?? new URL('/og-default.png', Astro.site);
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:site_name" content="Justin Soderstrom" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={ogType} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="Justin Soderstrom — Blog"
+  href={new URL('/rss.xml', Astro.site)}
+/>
+<link rel="sitemap" href="/sitemap-index.xml" />

@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// EDIT ME: add, remove, or reword projects freely.
+const projects = [
+  {
+    name: 'Runnel.AzureMonitor.RequestLogging',
+    description:
+      'Extended ASP.NET Core HTTP request & response body logging with Azure Monitor OpenTelemetry.',
+    url: 'https://github.com/justinsoderstrom/runnel-azuremonitor-requestlogging',
+    tech: 'C# · ASP.NET Core · OpenTelemetry',
+  },
+  {
+    name: 'WinAppSDK self-contained activation repro',
+    description:
+      'A minimum-code reproduction of a Windows App SDK single-instancing bug in self-contained mode, filed upstream.',
+    url: 'https://github.com/justinsoderstrom/winappsdk-selfcontained-activation-error',
+    tech: 'C# · Windows App SDK',
+  },
+];
+---
+
+<BaseLayout
+  title="Projects — Justin Soderstrom"
+  description="Open-source projects and other software by Justin Soderstrom."
+>
+  <h1>Projects</h1>
+  <p class="muted">
+    A selection of things I've built or contributed to. More on
+    <a href="https://github.com/justinsoderstrom">GitHub</a>.
+  </p>
+
+  <ul class="card-list">
+    {
+      projects.map((project) => (
+        <li class="card">
+          <h2>
+            <a href={project.url}>{project.name}</a>
+          </h2>
+          <p>{project.description}</p>
+          <span class="meta">{project.tech}</span>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>

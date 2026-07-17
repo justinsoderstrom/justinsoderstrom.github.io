@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Justin Soderstrom',
+  url: 'https://justinsoderstrom.com',
+  jobTitle: 'Software Engineer',
+  sameAs: [
+    'https://github.com/justinsoderstrom',
+    'https://www.linkedin.com/in/justinsoderstrom/',
+  ],
+};
+---
+
+<BaseLayout
+  title="Justin Soderstrom — Software Engineer"
+  description="Justin Soderstrom is a .NET software engineer building web APIs and cloud services. Projects, resume, and writing on software development."
+  jsonLd={jsonLd}
+>
+  <section class="hero">
+    <h1>Hi, I'm Justin.</h1>
+    <p class="tagline">.NET software engineer</p>
+  </section>
+
+  <!-- EDIT ME: everything below is placeholder bio copy — make it yours. -->
+  <p>
+    I build software on the .NET platform — ASP.NET Core APIs, cloud services
+    on Azure, and the occasional Windows desktop app. I care about clean
+    architecture, good observability, and code that the next person can
+    actually read.
+  </p>
+
+  <p>
+    Lately I've been working with Azure Monitor and OpenTelemetry, including{' '}
+    <a href="https://github.com/justinsoderstrom/runnel-azuremonitor-requestlogging">an open-source library</a>
+    {' '}for richer HTTP request and response logging in ASP.NET Core.
+  </p>
+
+  <p>
+    Have a look at my <a href="/projects/">projects</a>, skim my{' '}
+    <a href="/resume/">resume</a>, or read the <a href="/blog/">blog</a> — and
+    if you'd like to talk, <a href="/contact/">get in touch</a>.
+  </p>
+</BaseLayout>

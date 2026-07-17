@@ -1,0 +1,71 @@
+---
+const nav = [
+  { href: '/projects/', label: 'Projects' },
+  { href: '/resume/', label: 'Resume' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/contact/', label: 'Contact' },
+];
+
+const pathname = Astro.url.pathname;
+const isCurrent = (href: string) =>
+  pathname === href || pathname === href.slice(0, -1) || pathname.startsWith(href);
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="site-name" href="/">Justin Soderstrom</a>
+    <nav class="site-nav" aria-label="Main">
+      {
+        nav.map(({ href, label }) => (
+          <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>
+            {label}
+          </a>
+        ))
+      }
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+        <svg
+          class="icon-moon"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg
+          class="icon-sun"
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path
+            d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+          ></path>
+        </svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    const next =
+      document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>

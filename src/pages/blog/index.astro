@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getPublishedPosts, formatDate } from '../../lib/blog';
+
+const posts = await getPublishedPosts();
+---
+
+<BaseLayout
+  title="Blog — Justin Soderstrom"
+  description="Writing on .NET, Azure, and software development by Justin Soderstrom."
+>
+  <h1>Blog</h1>
+
+  {
+    posts.length === 0 ? (
+      <div class="empty-state">
+        <p>Nothing here yet — the first post is still brewing.</p>
+        <p>
+          In the meantime, check out my <a href="/projects/">projects</a>.
+        </p>
+      </div>
+    ) : (
+      <ul class="post-list">
+        {posts.map((post) => (
+          <li>
+            <h2>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+              {post.data.draft && <span class="draft-badge">draft</span>}
+            </h2>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {formatDate(post.data.pubDate)}
+            </time>
+            <p>{post.data.description}</p>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</BaseLayout>

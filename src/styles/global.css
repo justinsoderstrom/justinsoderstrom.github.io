@@ -1,0 +1,399 @@
+/* ---------- Design tokens ---------- */
+
+:root {
+  --bg: #ffffff;
+  --bg-muted: #f5f6f8;
+  --text: #1c1e21;
+  --text-muted: #5c6470;
+  --border: #e4e7eb;
+  --accent: #1a56db;
+
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', Consolas, 'SF Mono', Menlo,
+    monospace;
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #101418;
+  --bg-muted: #1a2027;
+  --text: #e6e9ed;
+  --text-muted: #9aa4b2;
+  --border: #2a323c;
+  --accent: #8ab6ff;
+
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  padding-block: 2.5rem 4rem;
+}
+
+.container {
+  max-width: 44rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  line-height: 1.25;
+  margin-block: 2rem 0.75rem;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-block-start: 0;
+}
+
+h2 {
+  font-size: 1.375rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+}
+
+p {
+  margin-block: 0.75rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+:not(pre) > code {
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: 0.3rem;
+  padding: 0.1em 0.35em;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin-block: 2.5rem;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  border-bottom: 1px solid var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  padding-block: 1rem;
+}
+
+.site-name {
+  font-weight: 650;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.site-nav a {
+  color: var(--text-muted);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+}
+
+.site-nav a:hover {
+  color: var(--text);
+  background: var(--bg-muted);
+  text-decoration: none;
+}
+
+.site-nav a[aria-current='page'] {
+  color: var(--text);
+  font-weight: 550;
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  margin-inline-start: 0.35rem;
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+  background: var(--bg-muted);
+}
+
+.theme-toggle .icon-sun {
+  display: none;
+}
+
+:root[data-theme='dark'] .theme-toggle .icon-sun {
+  display: block;
+}
+
+:root[data-theme='dark'] .theme-toggle .icon-moon {
+  display: none;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--border);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  padding-block: 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  display: inline-flex;
+}
+
+.footer-links a:hover {
+  color: var(--text);
+}
+
+/* ---------- Home ---------- */
+
+.hero h1 {
+  font-size: 2.25rem;
+  letter-spacing: -0.02em;
+}
+
+.hero .tagline {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  margin-block-start: 0.25rem;
+}
+
+/* ---------- Lists (projects, posts) ---------- */
+
+.card-list {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 0.6rem;
+  padding: 1rem 1.25rem;
+}
+
+.card h2,
+.card h3 {
+  margin-block: 0 0.35rem;
+  font-size: 1.1rem;
+}
+
+.card p {
+  margin-block: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.card .meta {
+  display: block;
+  margin-block-start: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-family: var(--font-mono);
+}
+
+.post-list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.75rem;
+}
+
+.post-list h2 {
+  margin-block: 0 0.25rem;
+  font-size: 1.2rem;
+}
+
+.post-list time,
+.post-meta {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.post-list p {
+  margin-block: 0.35rem 0;
+}
+
+.draft-badge {
+  display: inline-block;
+  vertical-align: middle;
+  margin-inline-start: 0.5rem;
+  padding: 0.05rem 0.5rem;
+  border: 1px solid var(--accent);
+  border-radius: 1rem;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.empty-state {
+  margin-block-start: 2rem;
+  padding: 2.5rem 1.5rem;
+  border: 1px dashed var(--border);
+  border-radius: 0.6rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+/* ---------- Blog post prose ---------- */
+
+.prose > header {
+  margin-block-end: 2rem;
+}
+
+.prose > header time {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.prose h2,
+.prose h3 {
+  margin-block-start: 2.25rem;
+}
+
+.prose li {
+  margin-block: 0.3rem;
+}
+
+.prose blockquote {
+  margin-inline: 0;
+  padding-inline-start: 1rem;
+  border-inline-start: 3px solid var(--border);
+  color: var(--text-muted);
+}
+
+.prose table {
+  display: block;
+  overflow-x: auto;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.prose th,
+.prose td {
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.75rem;
+  text-align: left;
+}
+
+.prose th {
+  background: var(--bg-muted);
+}
+
+.prose .expressive-code {
+  margin-block: 1.25rem;
+}
+
+.prose img {
+  border-radius: 0.5rem;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 480px) {
+  body {
+    font-size: 1rem;
+  }
+
+  h1,
+  .hero h1 {
+    font-size: 1.65rem;
+  }
+
+  .hero .tagline {
+    font-size: 1.05rem;
+  }
+}
