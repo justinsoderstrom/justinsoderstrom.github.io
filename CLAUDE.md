@@ -28,6 +28,7 @@ description: 'One or two sentences — used for SEO and the LinkedIn preview car
 pubDate: 2026-08-01
 heroImage: ./cover.png   # optional; becomes the LinkedIn/OG card image
 draft: true              # optional; keeps the post out of the live site
+comments: false          # optional; hides the giscus comment section (on by default)
 ---
 
 Post content. Reference images relatively: ![A diagram](./diagram.png)
@@ -39,6 +40,8 @@ Workflow:
 2. Remove `draft: true` when it's ready.
 3. Commit and push — the site rebuilds and deploys automatically.
 4. Share on LinkedIn by pasting the post URL — the Open Graph tags render the preview card. If the card looks stale, refresh it with the [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
+
+Comments are powered by [giscus](https://giscus.app) and stored in this repo's GitHub Discussions (Announcements category). The widget lives in `src/components/Comments.astro`.
 
 Code blocks support file-name frames and line highlighting:
 
