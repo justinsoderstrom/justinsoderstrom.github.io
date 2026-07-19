@@ -235,6 +235,21 @@ hr {
 
 /* ---------- Home ---------- */
 
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero-portrait {
+  width: 7rem;
+  height: 7rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
 .hero h1 {
   font-size: 2.25rem;
   letter-spacing: -0.02em;
@@ -395,5 +410,14 @@ hr {
 
   .hero .tagline {
     font-size: 1.05rem;
+  }
+
+  .hero {
+    gap: 1rem;
+  }
+
+  .hero-portrait {
+    width: 5rem;
+    height: 5rem;
   }
 }

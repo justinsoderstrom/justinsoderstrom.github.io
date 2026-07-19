@@ -10,7 +10,7 @@ Personal website built with [Astro](https://astro.build), deployed to GitHub Pag
 | `npm run dev`     | Dev server at `localhost:4321` (drafts visible)    |
 | `npm run build`   | Production build to `./dist/` (drafts excluded)    |
 | `npm run preview` | Serve the production build locally                 |
-| `npx astro check` | Type-check the project                             |
+| `npm run check`   | Type-check the project                             |
 
 ## Writing a blog post
 
@@ -54,6 +54,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 ## Placeholder content to replace
 
+- `src/assets/portrait.jpg` — drop a square photo of yourself here (`.jpg`,
+  `.png`, or `.webp`) and it appears on the home page as a circular avatar;
+  no file means no photo
 - `src/pages/index.astro` — bio (marked `EDIT ME`)
 - `src/pages/resume.astro` — resume content (marked `EDIT ME`)
 - `public/resume.pdf` — replace with your real resume PDF
