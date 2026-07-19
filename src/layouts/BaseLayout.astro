@@ -43,8 +43,9 @@ const { title, description, ogType, ogImage, jsonLd } = Astro.props;
     }
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
     <Header />
-    <main>
+    <main id="main">
       <div class="container">
         <slot />
       </div>

@@ -1,6 +1,6 @@
 ---
 import type { ImageMetadata } from 'astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Drop a square photo at src/assets/portrait.jpg (or .png/.webp) and it
@@ -11,14 +11,20 @@ const portraitFiles = import.meta.glob<{ default: ImageMetadata }>(
 );
 const portrait = Object.values(portraitFiles)[0]?.default;
 
+// Point JSON-LD at an optimized rendition rather than portrait.src, so the
+// full-size original never ships in the build.
+const portraitJsonLdImage = portrait
+  ? await getImage({ src: portrait, width: 800, format: 'webp' })
+  : undefined;
+
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
   name: 'Justin Soderstrom',
   url: 'https://justinsoderstrom.com',
   jobTitle: 'Software Engineer',
-  ...(portrait && {
-    image: new URL(portrait.src, Astro.site).href,
+  ...(portraitJsonLdImage && {
+    image: new URL(portraitJsonLdImage.src, Astro.site).href,
   }),
   sameAs: [
     'https://github.com/justinsoderstrom',
@@ -42,6 +48,7 @@ const jsonLd = {
           densities={[1, 2]}
           class="hero-portrait"
           loading="eager"
+          fetchpriority="high"
         />
       )
     }

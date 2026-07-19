@@ -98,6 +98,13 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Content links keep a permanent underline so they aren't distinguished by
+   color alone (WCAG 1.4.1); nav, footer, and card links rely on structure. */
+main a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -123,6 +130,29 @@ hr {
 
 .muted {
   color: var(--text-muted);
+}
+
+/* ---------- Skip link ---------- */
+
+/* Visually hidden until focused, then shown as a small floating button. */
+.skip-link {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 100;
+  padding: 0.5rem 0.9rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 0.4rem;
+  font-weight: 550;
+}
+
+.skip-link:not(:focus) {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ---------- Header ---------- */
@@ -295,6 +325,18 @@ hr {
   color: var(--text-muted);
   font-size: 0.85rem;
   font-family: var(--font-mono);
+}
+
+/* Card and post titles are standalone heading links — structure already
+   marks them as links, so skip the permanent underline. */
+.card h2 a,
+.post-list h2 a {
+  text-decoration: none;
+}
+
+.card h2 a:hover,
+.post-list h2 a:hover {
+  text-decoration: underline;
 }
 
 .post-list {

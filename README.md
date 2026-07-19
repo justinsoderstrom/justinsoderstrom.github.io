@@ -54,9 +54,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 ## Placeholder content to replace
 
-- `src/assets/portrait.jpg` — drop a square photo of yourself here (`.jpg`,
-  `.png`, or `.webp`) and it appears on the home page as a circular avatar;
-  no file means no photo
 - `src/pages/index.astro` — bio (marked `EDIT ME`)
 - `src/pages/resume.astro` — resume content (marked `EDIT ME`)
 - `public/resume.pdf` — replace with your real resume PDF

@@ -6,6 +6,16 @@ import expressiveCode from 'astro-expressive-code';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://justinsoderstrom.com',
+  prefetch: {
+    prefetchAll: true,
+    defaultStrategy: 'viewport',
+  },
+  build: {
+    // The site's only stylesheet is ~4.8 KB, so inlining it removes the one
+    // render-blocking request. Expressive-code's CSS is unaffected (it links
+    // its own stylesheet outside the Vite pipeline).
+    inlineStylesheets: 'always',
+  },
   integrations: [
     expressiveCode({
       themes: ['github-dark', 'github-light'],
