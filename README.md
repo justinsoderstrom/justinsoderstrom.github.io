@@ -1,6 +1,6 @@
 # justinsoderstrom.com
 
-Personal website built with [Astro](https://astro.build), deployed to GitHub Pages by GitHub Actions on every push to `main`.
+Personal website built with [Astro](https://astro.build), deployed to GitHub Pages by GitHub Actions on every push to `main`. Live at <https://justinsoderstrom.com>.
 
 ## Commands
 
@@ -61,18 +61,3 @@ var builder = WebApplication.CreateBuilder(args);
 - `src/pages/resume.astro` — resume content (marked `EDIT ME`)
 - `public/resume.pdf` — replace with your real resume PDF
 - `src/pages/projects.astro` — project list
-
-## Custom domain cutover (justinsoderstrom.com)
-
-The site works at `justinsoderstrom.github.io` immediately. To move it to the custom domain:
-
-1. In GoDaddy DNS for `justinsoderstrom.com`: **remove the forwarding rule** (currently redirects to LinkedIn), then add:
-   - `A` records on `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `CNAME` on `www` → `justinsoderstrom.github.io`
-2. Set the custom domain on the repo (or in Settings → Pages):
-   ```sh
-   gh api -X PUT repos/justinsoderstrom/justinsoderstrom.github.io/pages -f cname=justinsoderstrom.com
-   ```
-3. Once GitHub provisions the TLS certificate (minutes to a few hours), enable **Enforce HTTPS** in Settings → Pages.
-
-`astro.config.mjs` already sets `site: 'https://justinsoderstrom.com'`, so canonical URLs, the sitemap, and OG tags are correct from day one.
