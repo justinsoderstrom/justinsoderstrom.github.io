@@ -22,7 +22,7 @@ const jsonLd = {
   '@type': 'Person',
   name: 'Justin Soderstrom',
   url: 'https://justinsoderstrom.com',
-  jobTitle: 'Software Engineer',
+  jobTitle: 'Lead API Engineer',
   ...(portraitJsonLdImage && {
     image: new URL(portraitJsonLdImage.src, Astro.site).href,
   }),
@@ -34,8 +34,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="Justin Soderstrom — Software Engineer"
-  description="Justin Soderstrom is a .NET software engineer building web APIs and cloud services. Projects, resume, and writing on software development."
+  title="Justin Soderstrom — Lead API Engineer"
+  description="Justin Soderstrom is a Lead API Engineer designing and delivering cloud-native .NET systems on Azure. Projects, resume, and writing on software development."
   jsonLd={jsonLd}
 >
   <section class="hero">
@@ -54,16 +54,22 @@ const jsonLd = {
     }
     <div>
       <h1>Hi, I'm Justin.</h1>
-      <p class="tagline">.NET software engineer</p>
+      <p class="tagline">Lead API Engineer — building .NET applications on Azure</p>
     </div>
   </section>
 
-  <!-- EDIT ME: everything below is placeholder bio copy — make it yours. -->
   <p>
-    I build software on the .NET platform — ASP.NET Core APIs, cloud services
-    on Azure, and the occasional Windows desktop app. I care about clean
-    architecture, good observability, and code that the next person can
-    actually read.
+    I'm a Lead API Engineer at CCC Intelligent Solutions with nearly a decade
+    of experience designing and delivering cloud-native .NET systems on Azure. 
+    I build scalable ASP.NET Core APIs behind business-critical SaaS
+    products, plus the occasional web or desktop application when the job
+    calls for it.
+  </p>
+
+  <p>
+    Beyond the code, I bridge product, architecture, and delivery: partnering
+    with leadership on architecture decisions, modernizing legacy systems, and
+    mentoring engineering teams.
   </p>
 
   <!--
