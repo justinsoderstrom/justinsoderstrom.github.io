@@ -1,38 +1,155 @@
 ---
+import { statSync } from 'node:fs';
+import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const resumeKB = Math.round(
+  statSync(join(process.cwd(), 'public', 'resume.pdf')).size / 1024,
+);
 ---
 
 <BaseLayout
   title="Resume — Justin Soderstrom"
-  description="Resume of Justin Soderstrom, .NET software engineer."
+  description="Resume of Justin Soderstrom, Lead API Engineer designing and delivering cloud-native .NET systems on Azure."
 >
   <h1>Resume</h1>
   <p class="muted">
-    Prefer a copy? <a href="/resume.pdf" download>Download the PDF</a>.
+    Prefer a copy? <a href="/resume.pdf" download>Download the PDF ({resumeKB} KB)</a>.
   </p>
 
-  <!-- EDIT ME: everything below is placeholder resume content. -->
+  <h2>Summary</h2>
+  <ul>
+    <li>
+      Lead API Engineer with 9 years of experience designing and delivering
+      cloud-native .NET systems on Azure.
+    </li>
+    <li>
+      Specialized in building scalable APIs and microservices that support
+      business-critical SaaS products, modernizing legacy systems, and
+      mentoring high-performing engineering teams.
+    </li>
+    <li>Proven technical leader bridging product, architecture, and delivery.</li>
+    <li>
+      Full-stack capable, with primary focus on backend, cloud, and system
+      architecture.
+    </li>
+  </ul>
+
+  <h2>Key Skills</h2>
+  <ul>
+    <li>
+      <strong>Backend:</strong> C#, ASP.NET Core, Containers, REST APIs,
+      Microservices, GitHub Copilot, Claude Code
+    </li>
+    <li><strong>Cloud &amp; Data:</strong> Azure, SQL Server, T-SQL</li>
+    <li>
+      <strong>Architecture &amp; Leadership:</strong> System Architecture, API
+      Design, Scrum, CI/CD, Technical Leadership
+    </li>
+    <li><strong>Frontend:</strong> HTML, CSS, JavaScript, Vue.js</li>
+  </ul>
 
   <h2>Experience</h2>
 
-  <h3>Software Engineer — Your Company Here</h3>
-  <p class="muted">20XX – present</p>
+  <h3>Lead API Engineer — CCC Intelligent Solutions (Remote)</h3>
+  <p class="muted">July 2025 – present</p>
   <ul>
-    <li>Built and operated ASP.NET Core services on Azure.</li>
     <li>
-      Improved observability with Azure Monitor, OpenTelemetry, and structured
-      logging.
+      Partnered with engineering leadership on architecture decisions for CCC
+      ONE's timecard module migration, leading implementation and solving the
+      team's toughest technical problems.
     </li>
-    <li>Replace these bullets with real accomplishments and numbers.</li>
+    <li>
+      Championed adoption of GitHub Copilot and Claude Code across the Repair
+      Services team, establishing usage guidelines that shortened the path from
+      ticket to shipped feature.
+    </li>
   </ul>
 
-  <h2>Skills</h2>
+  <h3>Senior API Engineer — CCC Intelligent Solutions (Remote)</h3>
+  <p class="muted">July 2022 – July 2025</p>
   <ul>
-    <li>C# / .NET, ASP.NET Core, Entity Framework Core</li>
-    <li>Azure: App Service, Functions, Azure Monitor, Application Insights</li>
-    <li>SQL Server, REST API design, CI/CD with GitHub Actions</li>
+    <li>
+      Designed and implemented cloud-native ASP.NET Core APIs on Azure powering
+      CCC ONE, used daily by auto body repair shops around the USA.
+    </li>
+    <li>
+      Partnered with web, mobile, and desktop engineering teams to deliver
+      API-driven features for CCC ONE payroll, keeping API contracts consistent
+      across every client platform.
+    </li>
+    <li>
+      Built an internal web portal using ASP.NET Core Razor Pages, giving
+      implementation teams self-service tools to diagnose customer
+      configuration problems and cutting back-and-forth on support requests.
+    </li>
+    <li>
+      Developed a Windows desktop app using C# Windows App SDK and MSIX,
+      letting users import and export work files directly from CCC ONE Web, a
+      capability the browser sandbox couldn't provide.
+    </li>
+  </ul>
+
+  <h3>Senior Developer — RamQuest Software (Remote)</h3>
+  <p class="muted">Nov 2021 – July 2022</p>
+  <ul>
+    <li>
+      Architected and led development of a greenfield .NET SaaS product for
+      home mortgage companies, making the core technical decisions with no
+      prior system to build on.
+    </li>
+    <li>
+      Partnered directly with product stakeholders to scope technical
+      requirements from scratch, delivering the initial release on schedule.
+    </li>
+  </ul>
+
+  <h3>Systems Architect — Midco (Sioux Falls, SD)</h3>
+  <p class="muted">Dec 2020 – Nov 2021</p>
+  <ul>
+    <li>
+      Produced system architecture designs for migrating cable to fiber optic
+      systems and guided implementation across web and business development
+      teams.
+    </li>
+    <li>
+      Facilitated technical and business discussions to define and align system
+      requirements for Midco IPTV across cross-functional teams.
+    </li>
+  </ul>
+
+  <h3>Application Developer II — Midco (Sioux Falls, SD)</h3>
+  <p class="muted">May 2019 – Dec 2020</p>
+  <ul>
+    <li>
+      Designed microservice APIs supporting Midco's flagship cable video
+      products, replacing manual service-delivery steps with automated
+      workflows.
+    </li>
+    <li>
+      Integrated billing and device-provisioning systems to automate setting up
+      TiVo IPTV boxes, removing manual steps from the process.
+    </li>
+  </ul>
+
+  <h3>Software Engineer II — South Dakota BIT (Sioux Falls, SD)</h3>
+  <p class="muted">May 2017 – May 2019</p>
+  <ul>
+    <li>
+      Led a five-person agile team modernizing a multi-agency ASP.NET MVC
+      application, improving reliability, maintainability, and scalability for
+      statewide operations.
+    </li>
   </ul>
 
   <h2>Education</h2>
-  <p>Your degree, school, and year here.</p>
+
+  <h3>Bachelor of Science, Computer Science — Dakota State University</h3>
+  <p class="muted">May 2017 · 4.0 GPA</p>
+
+  <h3>
+    Associate of Science, Network &amp; Security Administration — Dakota State
+    University
+  </h3>
+  <p class="muted">Dec 2016 · 4.0 GPA</p>
 </BaseLayout>
