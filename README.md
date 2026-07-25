@@ -20,12 +20,13 @@ src/
   pages/          File-based routes: home, blog, projects, resume, contact, 404, RSS
   content/blog/   Blog posts — one folder per post (index.md + its images)
   layouts/        BaseLayout: <head>, theme handling, shared page chrome
-  components/     Header, Footer, and an SEO component (canonical URL, Open Graph, Twitter cards)
+  components/     Header, Footer, SEO (canonical URL, Open Graph, Twitter cards), Comments,
+                  TagList, ShareButtons, and PostNav
   lib/            Shared helpers (post filtering/sorting, date formatting)
   styles/         The single global stylesheet
 ```
 
-Blog posts live in `src/content/blog/` as an Astro **content collection**: each post is a folder containing an `index.md` and any images it uses, and the folder name becomes the URL. Frontmatter (title, description, publish date, hero image, draft and comments flags) is validated against a [Zod](https://zod.dev) schema in `src/content.config.ts`, so a malformed post fails the build instead of shipping broken. Posts marked `draft: true` are visible in the dev server for previewing but excluded from production builds.
+Blog posts live in `src/content/blog/` as an Astro **content collection**: each post is a folder containing an `index.md` and any images it uses, and the folder name becomes the URL. Frontmatter (title, description, publish date, hero image, tags, draft and comments flags) is validated against a [Zod](https://zod.dev) schema in `src/content.config.ts`, so a malformed post fails the build instead of shipping broken. Posts marked `draft: true` are visible in the dev server for previewing but excluded from production builds.
 
 Each post gets a comment section by default, rendered by `src/components/Comments.astro`: a giscus embed backed by GitHub Discussions, so comments live alongside the code with no separate service to run. The widget follows the site's theme toggle live, and a post can opt out with `comments: false` in its frontmatter.
 
