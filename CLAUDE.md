@@ -29,6 +29,7 @@ pubDate: 2026-08-01
 heroImage: ./cover.png   # optional; becomes the LinkedIn/OG card image
 draft: true              # optional; keeps the post out of the live site
 comments: false          # optional; hides the giscus comment section (on by default)
+tags: ['dotnet', 'azure'] # optional; shown as pills on the post and the blog index, each linking to /blog/tags/<slug>/
 ---
 
 Post content. Reference images relatively: ![A diagram](./diagram.png)
@@ -42,6 +43,8 @@ Workflow:
 4. Share on LinkedIn by pasting the post URL — the Open Graph tags render the preview card. If the card looks stale, refresh it with the [LinkedIn Post Inspector](https://www.linkedin.com/post-inspector/).
 
 Comments are powered by [giscus](https://giscus.app) and stored in this repo's GitHub Discussions (Announcements category). The widget lives in `src/components/Comments.astro`.
+
+Each post automatically gets Previous/Next links at the bottom (by `pubDate`, older on the left, newer on the right) — no frontmatter needed. The section is hidden entirely when there's only one published post.
 
 Code blocks support file-name frames and line highlighting:
 

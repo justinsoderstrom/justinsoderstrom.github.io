@@ -3,19 +3,27 @@ import { render } from 'astro:content';
 import { Image, getImage } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Comments from '../../components/Comments.astro';
+import TagList from '../../components/TagList.astro';
+import ShareButtons from '../../components/ShareButtons.astro';
+import PostNav from '../../components/PostNav.astro';
 import { getPublishedPosts, formatDate } from '../../lib/blog';
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
-  return posts.map((post) => ({
+  return posts.map((post, index) => ({
     params: { slug: post.id },
-    props: { post },
+    props: {
+      post,
+      // Posts are sorted newest first, so the newer post sits one index back.
+      prevPost: posts[index + 1],
+      nextPost: posts[index - 1],
+    },
   }));
 }
 
-const { post } = Astro.props;
+const { post, prevPost, nextPost } = Astro.props;
 const { Content } = await render(post);
-const { title, description, pubDate, updatedDate, heroImage, draft, comments } =
+const { title, description, pubDate, updatedDate, heroImage, draft, comments, tags } =
   post.data;
 
 // JPEG for the OG card — LinkedIn's scraper doesn't reliably handle WebP.
@@ -46,13 +54,18 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`${title} — Justin Soderstrom`}
+  title={`Justin Soderstrom: ${title}`}
   description={description}
   ogType="article"
   ogImage={ogImage}
   jsonLd={jsonLd}
 >
   <article class="prose">
+    {
+      heroImage && (
+        <Image src={heroImage} alt="" widths={[720, 1440]} class="hero-image" />
+      )
+    }
     <header>
       <h1>
         {title}
@@ -71,9 +84,12 @@ const jsonLd = {
           )
         }
       </p>
-      {heroImage && <Image src={heroImage} alt="" widths={[720, 1440]} />}
+      <TagList tags={tags} />
+      <ShareButtons url={canonical} title={title} />
     </header>
     <Content />
+    <ShareButtons url={canonical} title={title} />
   </article>
+  <PostNav prevPost={prevPost} nextPost={nextPost} />
   {comments && <Comments />}
 </BaseLayout>

@@ -22,3 +22,33 @@ export function formatDate(date: Date) {
     timeZone: 'UTC',
   }).format(date);
 }
+
+/** URL-safe slug for a tag, e.g. "ASP.NET Core" -> "asp-net-core". */
+export function tagSlug(tag: string) {
+  return tag
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/** Every tag in use across published posts, with how many posts use it. */
+export async function getAllTags() {
+  const posts = await getPublishedPosts();
+  const counts = new Map<string, { tag: string; count: number }>();
+  for (const post of posts) {
+    for (const tag of post.data.tags) {
+      const slug = tagSlug(tag);
+      const existing = counts.get(slug);
+      counts.set(slug, { tag, count: (existing?.count ?? 0) + 1 });
+    }
+  }
+  return [...counts.entries()]
+    .map(([slug, { tag, count }]) => ({ slug, tag, count }))
+    .sort((a, b) => a.tag.localeCompare(b.tag));
+}
+
+/** Published posts tagged with the given tag slug, newest first. */
+export async function getPostsByTagSlug(slug: string) {
+  const posts = await getPublishedPosts();
+  return posts.filter((post) => post.data.tags.some((t) => tagSlug(t) === slug));
+}

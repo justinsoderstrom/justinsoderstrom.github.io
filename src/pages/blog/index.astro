@@ -1,15 +1,31 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getPublishedPosts, formatDate } from '../../lib/blog';
+import TagList from '../../components/TagList.astro';
+import { getPublishedPosts, getAllTags, formatDate } from '../../lib/blog';
 
 const posts = await getPublishedPosts();
+const tags = await getAllTags();
 ---
 
 <BaseLayout
-  title="Blog — Justin Soderstrom"
+  title="Justin Soderstrom: Blog"
   description="Writing on .NET, Azure, and software development by Justin Soderstrom."
 >
   <h1>Blog</h1>
+
+  {
+    tags.length > 0 && (
+      <ul class="tag-list tag-list-lg">
+        {tags.map(({ slug, tag, count }) => (
+          <li>
+            <a href={`/blog/tags/${slug}/`}>
+              {tag} <span class="tag-count">{count}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
 
   {
     posts.length === 0 ? (
@@ -31,6 +47,7 @@ const posts = await getPublishedPosts();
               {formatDate(post.data.pubDate)}
             </time>
             <p>{post.data.description}</p>
+            <TagList tags={post.data.tags} />
           </li>
         ))}
       </ul>

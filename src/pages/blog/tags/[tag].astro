@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TagList from '../../../components/TagList.astro';
+import { getAllTags, getPostsByTagSlug, formatDate } from '../../../lib/blog';
+
+export async function getStaticPaths() {
+  const tags = await getAllTags();
+  return tags.map(({ slug, tag }) => ({
+    params: { tag: slug },
+    props: { tagName: tag },
+  }));
+}
+
+const { tag: slug } = Astro.params;
+const { tagName } = Astro.props;
+const posts = await getPostsByTagSlug(slug);
+---
+
+<BaseLayout
+  title={`Justin Soderstrom: Posts tagged “${tagName}”`}
+  description={`Blog posts tagged ${tagName}.`}
+>
+  <h1>Tagged “{tagName}”</h1>
+  <p class="post-meta"><a href="/blog/">← Back to Blog</a></p>
+
+  <ul class="post-list">
+    {
+      posts.map((post) => (
+        <li>
+          <h2>
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            {post.data.draft && <span class="draft-badge">draft</span>}
+          </h2>
+          <time datetime={post.data.pubDate.toISOString()}>
+            {formatDate(post.data.pubDate)}
+          </time>
+          <p>{post.data.description}</p>
+          <TagList tags={post.data.tags} />
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
