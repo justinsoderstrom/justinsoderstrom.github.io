@@ -239,13 +239,25 @@ hr {
 
 .footer-inner {
   display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-block: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.footer-top {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem 1rem;
-  padding-block: 1.25rem;
   color: var(--text-muted);
-  font-size: 0.9rem;
+}
+
+.footer-disclaimer {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
 }
 
 .footer-links {
