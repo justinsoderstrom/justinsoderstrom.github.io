@@ -27,9 +27,19 @@ const { title, description, pubDate, updatedDate, heroImage, draft, comments, ta
   post.data;
 
 // JPEG for the OG card — LinkedIn's scraper doesn't reliably handle WebP.
+// Pinned to 1200x630 because LinkedIn falls back to a small card below
+// 1200x627; `cover` crops a mismatched hero rather than distorting it.
 const ogImage = heroImage
   ? new URL(
-      (await getImage({ src: heroImage, width: 1200, format: 'jpg' })).src,
+      (
+        await getImage({
+          src: heroImage,
+          width: 1200,
+          height: 630,
+          fit: 'cover',
+          format: 'jpg',
+        })
+      ).src,
       Astro.site,
     )
   : undefined;
@@ -54,7 +64,7 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title={`Justin Soderstrom: ${title}`}
+  title={`${title} — Justin Soderstrom`}
   description={description}
   ogType="article"
   ogImage={ogImage}
