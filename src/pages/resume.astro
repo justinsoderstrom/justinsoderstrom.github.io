@@ -1,52 +1,59 @@
 ---
-import { statSync } from 'node:fs';
-import { join } from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const resumeKB = Math.round(
-  statSync(join(process.cwd(), 'public', 'resume.pdf')).size / 1024,
-);
 ---
 
 <BaseLayout
   title="Justin Soderstrom: Resume"
-  description="Resume of Justin Soderstrom, Lead API Engineer designing and delivering cloud-native .NET systems on Azure."
+  description="Resume of Justin Soderstrom, Lead Software Engineer designing and delivering cloud-native .NET systems on Azure."
 >
   <h1>Resume</h1>
   <p class="muted">
-    Prefer a copy? <a href="/resume.pdf" download>Download the PDF ({resumeKB} KB)</a>.
+    Grand Rapids, MI · <a href="mailto:justin@justinsoderstrom.com"
+      >justin@justinsoderstrom.com</a
+    > · <a href="https://www.linkedin.com/in/justinsoderstrom/">LinkedIn</a> ·{
+      ' '
+    }
+    <a href="https://github.com/justinsoderstrom">GitHub</a>
   </p>
 
   <h2>Summary</h2>
-  <ul>
-    <li>
-      Lead API Engineer with nearly a decade of experience designing and delivering
-      cloud-native .NET systems on Azure.
-    </li>
-    <li>
-      Specialized in building scalable APIs and microservices that support
-      business-critical SaaS products, modernizing legacy systems, and
-      mentoring high-performing engineering teams.
-    </li>
-    <li>Proven technical leader bridging product, architecture, and delivery.</li>
-    <li>
-      Full-stack capable, with primary focus on backend, cloud, and system
-      architecture.
-    </li>
-  </ul>
+  <p>
+    Lead Software Engineer with 9 years of experience designing, building, and
+    operating cloud-native .NET systems on Azure — from legacy modernization to
+    greenfield builds.
+  </p>
+  <p>
+    Deep expertise in ASP.NET Core APIs and microservices architecture powering
+    high-throughput, mission-critical SaaS products. Track record of owning hard
+    technical problems end-to-end, from system design through production
+    operation.
+  </p>
+  <p>
+    Full-stack capable, with a primary focus on backend, cloud, and system
+    architecture. Currently modernizing specific modules of a large legacy
+    platform at CCC Intelligent Solutions — moving desktop functionality onto
+    web APIs and building microservices where they fit — while leading a team of
+    engineers.
+  </p>
 
   <h2>Key Skills</h2>
   <ul>
     <li>
-      <strong>Backend:</strong> C#, ASP.NET Core, Containers, REST APIs,
-      Microservices, GitHub Copilot, Claude Code
+      <strong>Backend:</strong> C#, .NET / ASP.NET Core, REST APIs, Microservices,
+      Docker
     </li>
-    <li><strong>Cloud &amp; Data:</strong> Azure, SQL Server, T-SQL</li>
     <li>
-      <strong>Architecture &amp; Leadership:</strong> System Architecture, API
-      Design, Scrum, CI/CD, Technical Leadership
+      <strong>Cloud &amp; Data:</strong> Azure (Container Apps, App Service, Functions,
+      Event Hubs, Key Vault), Azure SQL / SQL Server, T-SQL
     </li>
-    <li><strong>Frontend:</strong> HTML, CSS, JavaScript, Vue.js</li>
+    <li>
+      <strong>Architecture &amp; Leadership:</strong> System Architecture, API Design,
+      CI/CD (Azure DevOps), Scrum, Technical Leadership
+    </li>
+    <li>
+      <strong>AI-Assisted Development:</strong> Claude Code, GitHub Copilot
+    </li>
+    <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
   </ul>
 
   <h2>Experience</h2>
@@ -55,14 +62,25 @@ const resumeKB = Math.round(
   <p class="muted">July 2025 – present</p>
   <ul>
     <li>
-      Partnered with engineering leadership on architecture decisions for CCC
-      ONE's timecard module migration, leading implementation and solving the
-      team's toughest technical problems.
+      Producing the designs driving the modernization of CCC ONE's timecard
+      module and setting its technical direction with engineering leadership — a
+      migration spanning 100+ API endpoints across web, mobile, and desktop
+      clients, inside a platform used by roughly 30,500 repair shops.
     </li>
     <li>
-      Championed adoption of GitHub Copilot and Claude Code across the Repair
-      Services team, establishing usage guidelines that shortened the path from
-      ticket to shipped feature.
+      Building the replacement services alongside the existing module and moving
+      clients onto them endpoint by endpoint, now in active pilot with an
+      initial cohort of shops, with full backward compatibility so every shop
+      not yet in the pilot keeps running uninterrupted on the current system.
+    </li>
+    <li>
+      Lead a five-person engineering team, mentoring the other four engineers
+      and keeping API contracts aligned with the web, mobile, and desktop client
+      teams consuming them.
+    </li>
+    <li>
+      Use AI-assisted development tools (Claude Code, GitHub Copilot) daily to
+      speed up delivery across the team.
     </li>
   </ul>
 
@@ -70,23 +88,27 @@ const resumeKB = Math.round(
   <p class="muted">July 2022 – July 2025</p>
   <ul>
     <li>
-      Designed and implemented cloud-native ASP.NET Core APIs on Azure powering
-      CCC ONE, used daily by auto body repair shops around the USA.
+      Designed and built 8 cloud-native ASP.NET Core microservices on Azure for
+      the CCC ONE modules my team owns — together processing approximately 45
+      million requests per month for 1,100+ collision repair shops and major
+      national auto insurers across all 50 states, who rely on them for repair
+      estimate configuration data.
     </li>
     <li>
       Partnered with web, mobile, and desktop engineering teams to deliver
-      API-driven features for CCC ONE payroll, keeping API contracts consistent
+      API-driven features for CCC ONE payroll, keeping contracts consistent
       across every client platform.
     </li>
     <li>
-      Built an internal web portal using ASP.NET Core Razor Pages, giving
-      implementation teams self-service tools to diagnose customer
-      configuration problems and cutting back-and-forth on support requests.
+      Built an internal web portal (ASP.NET Core Razor Pages) giving
+      implementation teams self-service diagnostics for customer configuration
+      issues, cutting a common onboarding support request by an estimated 90%.
     </li>
     <li>
-      Developed a Windows desktop app using C# Windows App SDK and MSIX,
-      letting users import and export work files directly from CCC ONE Web, a
-      capability the browser sandbox couldn't provide.
+      Developed a Windows desktop application (C#, Windows App SDK, MSIX) used
+      by roughly 4,000 insurance and repair-shop users to import and export
+      estimates directly from CCC ONE Web — a capability the browser sandbox
+      couldn't otherwise provide.
     </li>
   </ul>
 
@@ -94,13 +116,13 @@ const resumeKB = Math.round(
   <p class="muted">Nov 2021 – July 2022</p>
   <ul>
     <li>
-      Architected and led development of a greenfield .NET SaaS product for
-      home mortgage companies, making the core technical decisions with no
-      prior system to build on.
+      Helped make foundational technology and architecture decisions for a
+      greenfield .NET SaaS platform built for a market of 1,000+ mortgage title
+      companies, with no existing system to build on.
     </li>
     <li>
       Partnered directly with product stakeholders to scope technical
-      requirements from scratch, delivering the initial release on schedule.
+      requirements from scratch in a fast-moving, pre-launch environment.
     </li>
   </ul>
 
@@ -108,13 +130,19 @@ const resumeKB = Math.round(
   <p class="muted">Dec 2020 – Nov 2021</p>
   <ul>
     <li>
-      Produced system architecture designs for migrating cable to fiber optic
-      systems and guided implementation across web and business development
-      teams.
+      Created internal system designs for several projects varying in size and
+      scope.
     </li>
     <li>
-      Facilitated technical and business discussions to define and align system
-      requirements for Midco IPTV across cross-functional teams.
+      Assisted developers with implementing designs and features by coding with
+      them.
+    </li>
+    <li>
+      Led meetings with business and technical staff to create functional system
+      requirements.
+    </li>
+    <li>
+      Presented technical project updates to business and technical leadership.
     </li>
   </ul>
 
@@ -122,34 +150,81 @@ const resumeKB = Math.round(
   <p class="muted">May 2019 – Dec 2020</p>
   <ul>
     <li>
-      Designed microservice APIs supporting Midco's flagship cable video
-      products, replacing manual service-delivery steps with automated
-      workflows.
+      Extended a high-uptime ASP.NET MVC 5 application used by field operations
+      and executive personnel.
     </li>
     <li>
-      Integrated billing and device-provisioning systems to automate setting up
-      TiVo IPTV boxes, removing manual steps from the process.
+      Maintained a Microsoft Dynamics CRM installation critical to ongoing sales
+      operations.
     </li>
+    <li>
+      Designed and built several microservice APIs for a new IPTV product.
+    </li>
+    <li>Assisted in automating device provisioning systems.</li>
+    <li>Helped with DevOps and unit testing initiatives.</li>
   </ul>
 
   <h3>Software Engineer II — South Dakota BIT (Sioux Falls, SD)</h3>
-  <p class="muted">May 2017 – May 2019</p>
+  <p class="muted">June 2018 – May 2019</p>
   <ul>
     <li>
-      Led a five-person agile team modernizing a multi-agency ASP.NET MVC
-      application, improving reliability, maintainability, and scalability for
-      statewide operations.
+      Led a team of 2 other developers on a large project using C# and .NET MVC.
+    </li>
+    <li>
+      Mentored software engineers of various levels of experience on software
+      architecture and best practices.
+    </li>
+    <li>Led brown bag presentations on application security.</li>
+  </ul>
+
+  <h3>Software Engineer I — South Dakota BIT (Pierre, SD)</h3>
+  <p class="muted">May 2017 – May 2018</p>
+  <ul>
+    <li>
+      Managed and executed entire software development lifecycles of several
+      concurrent software projects of varying size: meeting with clients,
+      gathering business requirements, designing and developing custom software
+      solutions, and implementing and maintaining the final product.
+    </li>
+    <li>
+      Led and mentored junior developers on projects, and provided input on
+      improving organization development processes.
+    </li>
+    <li>
+      Built mostly web applications with .NET MVC 5 and 6, working across the
+      full stack on both front-end and back-end logic.
+    </li>
+  </ul>
+
+  <h3>
+    Software Intern — Johns Hopkins University Applied Physics Laboratory
+    (Laurel, MD)
+  </h3>
+  <p class="muted">May 2016 – Aug 2016</p>
+  <ul>
+    <li>Performed reverse engineering on Android applications.</li>
+    <li>
+      Assisted in developing a sponsor demonstration and wrote the primary demo
+      software application.
+    </li>
+    <li>
+      Interacted with outside organizations to procure equipment for lab
+      projects.
+    </li>
+    <li>
+      Worked in the Software Engineering team for the AOS Intern Project to
+      develop software functionality.
     </li>
   </ul>
 
   <h2>Education</h2>
 
   <h3>Bachelor of Science, Computer Science — Dakota State University</h3>
-  <p class="muted">May 2017 · 4.0 GPA</p>
+  <p class="muted">Aug 2014 – May 2017 · 4.0 GPA · Minor in Applied Math</p>
 
   <h3>
     Associate of Science, Network &amp; Security Administration — Dakota State
     University
   </h3>
-  <p class="muted">Dec 2016 · 4.0 GPA</p>
+  <p class="muted">2014 – 2016 · 4.0 GPA</p>
 </BaseLayout>

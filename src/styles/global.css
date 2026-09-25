@@ -8,10 +8,10 @@
   --border: #e4e7eb;
   --accent: #1a56db;
 
-  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
-    sans-serif;
-  --font-mono: ui-monospace, 'Cascadia Code', Consolas, 'SF Mono', Menlo,
-    monospace;
+  --font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --font-mono:
+    ui-monospace, 'Cascadia Code', Consolas, 'SF Mono', Menlo, monospace;
 
   color-scheme: light;
 }
@@ -120,6 +120,8 @@ code {
   border: 1px solid var(--border);
   border-radius: 0.3rem;
   padding: 0.1em 0.35em;
+  /* Long identifiers would otherwise push the page wider than a phone. */
+  overflow-wrap: anywhere;
 }
 
 hr {
