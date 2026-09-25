@@ -50,5 +50,7 @@ export async function getAllTags() {
 /** Published posts tagged with the given tag slug, newest first. */
 export async function getPostsByTagSlug(slug: string) {
   const posts = await getPublishedPosts();
-  return posts.filter((post) => post.data.tags.some((t) => tagSlug(t) === slug));
+  return posts.filter((post) =>
+    post.data.tags.some((t) => tagSlug(t) === slug),
+  );
 }

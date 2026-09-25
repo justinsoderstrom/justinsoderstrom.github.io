@@ -26,9 +26,9 @@ src/content/blog/
 title: 'My first post'
 description: 'One or two sentences — used for SEO and the LinkedIn preview card.'
 pubDate: 2026-08-01
-heroImage: ./cover.png   # optional; becomes the LinkedIn/OG card image
-draft: true              # optional; keeps the post out of the live site
-comments: false          # optional; hides the giscus comment section (on by default)
+heroImage: ./cover.png # optional; becomes the LinkedIn/OG card image
+draft: true # optional; keeps the post out of the live site
+comments: false # optional; hides the giscus comment section (on by default)
 tags: ['dotnet', 'azure'] # optional; shown as pills on the post and the blog index, each linking to /blog/tags/<slug>/
 ---
 
