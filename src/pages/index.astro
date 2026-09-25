@@ -22,7 +22,7 @@ const jsonLd = {
   '@type': 'Person',
   name: 'Justin Soderstrom',
   url: 'https://justinsoderstrom.com',
-  jobTitle: 'Lead API Engineer',
+  jobTitle: 'Lead Software Engineer',
   ...(portraitJsonLdImage && {
     image: new URL(portraitJsonLdImage.src, Astro.site).href,
   }),
@@ -34,8 +34,8 @@ const jsonLd = {
 ---
 
 <BaseLayout
-  title="Justin Soderstrom: Lead API Engineer"
-  description="Justin Soderstrom is a Lead API Engineer designing and delivering cloud-native .NET systems on Azure. Projects, resume, and writing on software development."
+  title="Justin Soderstrom: Lead Software Engineer"
+  description="Justin Soderstrom is a Lead Software Engineer designing and delivering cloud-native .NET systems on Azure. Projects, resume, and writing on software development."
   jsonLd={jsonLd}
 >
   <section class="hero">
@@ -54,27 +54,50 @@ const jsonLd = {
     }
     <div>
       <h1>Hi, I'm Justin.</h1>
-      <p class="tagline">Lead API Engineer: building .NET applications on Azure</p>
+      <p class="tagline">Lead Software Engineer</p>
     </div>
   </section>
 
   <p>
-    I'm a Lead API Engineer at CCC Intelligent Solutions with nearly a decade
-    of experience designing and delivering cloud-native .NET systems on Azure. 
-    I build scalable ASP.NET Core APIs behind business-critical SaaS
-    products, plus the occasional web or desktop application when the job
-    calls for it.
+    I'm a Lead Software Engineer at CCC Intelligent Solutions with nearly a
+    decade of experience designing, building, and operating cloud-native .NET
+    systems on Azure. Most of that time has gone into ASP.NET Core APIs and
+    microservices behind business-critical products, including eight services at
+    CCC that together handle around 45 million requests a month, with full-stack
+    web and desktop work when the problem called for it.
   </p>
 
   <p>
-    Beyond the code, I bridge product, architecture, and delivery: partnering
-    with leadership on architecture decisions, modernizing legacy systems, and
-    mentoring engineering teams.
+    These days, I'm leading a team of four other engineers modernizing specific
+    modules of CCC ONE: moving functionality from the legacy desktop product
+    onto web APIs, and building new microservices where they fit. CCC ONE is
+    used by roughly 30,000 repair shops, so each module moves over with full
+    backward compatibility while every shop keeps running. That's the kind of
+    work I do best: hard technical problems I can own end to end, from system
+    design through production.
   </p>
 
   <p>
-    Have a look at my <a href="/projects/">projects</a>, skim
-    my <a href="/resume/">resume</a>, or read the <a href="/blog/">blog</a>.
-    If you'd like to talk, <a href="/contact/">get in touch</a>.
+    While my background is in C#, most of my code now comes from AI agents I
+    direct and review, primarily using Claude Code. The architecture, the
+    trade-offs, and the call on what ships stay with me; the agents handle more
+    of the typing. In fact, this entire website was built the same way, and <a
+      href="https://github.com/justinsoderstrom/justinsoderstrom.github.io"
+      >the code is on GitHub</a
+    >!
+  </p>
+
+  <p>
+    Outside of work, I live in Grand Rapids, Michigan with my wife and child. I
+    love to read, hike, play games, and spend time with my family.
+  </p>
+
+  <p>
+    Have a look at my <a href="/projects/">projects</a>, skim my <a
+      href="/resume/">resume</a
+    >, or read the <a href="/blog/">blog</a>, where I occasionally write about
+    software development. If you're hiring for your team, I'd love to <a
+      href="/contact/">hear from you</a
+    >!
   </p>
 </BaseLayout>

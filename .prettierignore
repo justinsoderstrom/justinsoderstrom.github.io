@@ -1,0 +1,7 @@
+dist/
+.astro/
+node_modules/
+package-lock.json
+
+# Blog posts use hard line breaks and hand-tuned markdown; leave them alone.
+src/content/blog/

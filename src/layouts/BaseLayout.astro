@@ -27,9 +27,7 @@ const { title, description, ogType, ogImage, jsonLd } = Astro.props;
       // Runs before paint to avoid a theme flash.
       document.documentElement.dataset.theme =
         localStorage.getItem('theme') ??
-        (matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light');
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     </script>
     <SEO {title} {description} {ogType} {ogImage} />
     {
